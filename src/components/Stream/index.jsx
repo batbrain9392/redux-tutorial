@@ -1,8 +1,6 @@
 import React from 'react'
 
-const Stream = (props) => {
-  const { tracks = [] } = props
-
+const Stream = ({ tracks = [] }) => {
   return (
     <div>
       {tracks.map((track, key) => {
