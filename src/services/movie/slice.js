@@ -7,7 +7,7 @@ export const fetchMoviesBySearch = createAsyncThunk(
   `${sliceName}/fetchMoviesBySearch`,
   async (searchTerm = '', page = 1, type = '', year = '') => {
     const response = await movieAPI.fetchBySearch(searchTerm, page, type, year)
-    return response
+    return { ...response, searchTerm }
   }
 )
 
@@ -22,12 +22,14 @@ export const slice = createSlice({
   },
   extraReducers: {
     [fetchMoviesBySearch.pending]: (state) => {
+      state.searchTerm = ''
       state.entities = []
       state.totalEntities = 0
       state.error = null
       state.loading = true
     },
     [fetchMoviesBySearch.fulfilled]: (state, action) => {
+      state.searchTerm = action.payload.searchTerm
       state.entities = action.payload.Search
       state.totalEntities = action.payload.totalResults
       state.loading = false
