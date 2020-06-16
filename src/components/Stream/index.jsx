@@ -1,17 +1,9 @@
 import React from 'react'
+import Stream from './presenter'
+import { useSelector } from 'react-redux'
 
-const Stream = ({ tracks = [] }) => {
-  return (
-    <div>
-      {tracks.map((track, key) => {
-        return (
-          <div className='track' key={key}>
-            {track.title}
-          </div>
-        )
-      })}
-    </div>
-  )
+export default () => {
+  const tracks = useSelector((state) => state.track)
+
+  return <Stream tracks={tracks} />
 }
-
-export default Stream
