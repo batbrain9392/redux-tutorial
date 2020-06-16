@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import track from './services/track/slice'
+import movie from './services/movie/slice'
 
 const rootReducer = combineReducers({
-  track,
+  movie,
 })
 
 export default rootReducer
