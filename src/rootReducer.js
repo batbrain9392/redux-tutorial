@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import track from './services/track/slice'
+import track from './services/track/trackSlice'
 
 const rootReducer = combineReducers({
   track,
