@@ -17,7 +17,7 @@ export default () => {
   )
   const dispatch = useDispatch()
   const [input, setInput] = useState('')
-  const [error, setError] = useState('')
+  const [error, setError] = useState()
 
   useEffect(() => {
     setInput(searchTerm)
@@ -36,7 +36,8 @@ export default () => {
 
   const onResetHandler = (e) => {
     e.preventDefault()
-    setError('')
+    setInput('')
+    setError()
     dispatch(resetSearchTerm())
     dispatch(resetMovies())
   }
