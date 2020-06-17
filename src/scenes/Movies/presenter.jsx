@@ -1,6 +1,6 @@
 import React from 'react'
-import SearchForm from '../../components/SearchForm'
-import FilterForm from '../../components/FilterForm'
+import SearchForm from './components/SearchForm'
+import FilterForm from './components/FilterForm'
 
 const Movies = ({ entities, totalEntities, error, loading }) => {
   return (

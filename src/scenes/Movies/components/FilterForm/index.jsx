@@ -1,8 +1,8 @@
 import React from 'react'
 import FilterForm from './presenter'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
-import { setFilters, resetFilters } from '../../services/filter/slice'
-import { fetchMoviesBySearch } from '../../services/movie/slice'
+import { setFilters, resetFilters } from '../../../../services/filter/slice'
+import { fetchMoviesBySearch } from '../../../../services/movie/slice'
 
 export default () => {
   const { searchTerm, page, type, year } = useSelector(
