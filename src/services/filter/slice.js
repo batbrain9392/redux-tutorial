@@ -14,20 +14,25 @@ export const slice = createSlice({
     setSearchTerm: (state, action) => ({
       ...state,
       searchTerm: action.payload,
+      page: 1,
     }),
-    resetSearchTerm: (state) => ({
-      ...state,
+    resetSearchTerm: () => ({
       searchTerm: '',
+      page: 1,
+      type: '',
+      year: '',
+    }),
+    setPage: (state, action) => ({
+      ...state,
+      page: action.payload,
     }),
     setFilters: (state, action) => ({
       ...state,
-      page: action.payload.page,
       type: action.payload.type,
       year: action.payload.year,
     }),
     resetFilters: (state) => ({
       ...state,
-      page: 1,
       type: '',
       year: '',
     }),
@@ -37,6 +42,7 @@ export const slice = createSlice({
 export const {
   setSearchTerm,
   resetSearchTerm,
+  setPage,
   setFilters,
   resetFilters,
 } = slice.actions
