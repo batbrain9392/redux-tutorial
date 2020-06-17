@@ -1,8 +1,8 @@
 import React from 'react'
-import Stream from './components/Stream'
+import Movies from './scenes/Movies'
 
 function App() {
-  return <Stream />
+  return <Movies />
 }
 
 export default App
