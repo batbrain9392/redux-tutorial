@@ -9,17 +9,10 @@ export default () => {
     (state) => state.filter,
     shallowEqual
   )
-  const pages = useSelector((state) => {
-    const arr = []
-    for (let i = 2; i <= Math.ceil(state.movie.totalEntities / 10); i++) {
-      arr.push(i)
-    }
-    return arr
-  })
   const dispatch = useDispatch()
 
-  const onFilterHandler = (page, type, year) => {
-    dispatch(setFilters({ page, type, year }))
+  const onFilterHandler = (type, year) => {
+    dispatch(setFilters({ type, year }))
     dispatch(fetchMoviesBySearch({ searchTerm, page, type, year }))
   }
 
@@ -30,8 +23,7 @@ export default () => {
 
   return (
     <FilterForm
-      filterValues={{ page, type, year }}
-      pages={pages}
+      filterValues={{ type, year }}
       onFilter={onFilterHandler}
       onResetFilter={onResetFilterHandler}
     />

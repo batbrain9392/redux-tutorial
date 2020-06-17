@@ -25,13 +25,15 @@ const Movies = ({ entities, totalEntities, error, loading }) => {
       </Container>
       {!totalEntities && !error ? (
         <Container>
-          <Box mt={3}>
-            <Description />
-          </Box>
+          <Description />
         </Container>
       ) : (
         <>
-          {/* <FilterForm /> */}
+          <Container>
+            <Box mb={3}>
+              <FilterForm />
+            </Box>
+          </Container>
           <Divider />
           <Container>
             <Box mt={3} mb={5}>

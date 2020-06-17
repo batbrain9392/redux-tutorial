@@ -5,7 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import Avatar from '@material-ui/core/Avatar'
-import { blue, pink, green } from '@material-ui/core/colors'
+import { indigo, orange, green } from '@material-ui/core/colors'
 import MovieIcon from '@material-ui/icons/Movie'
 import TvIcon from '@material-ui/icons/Tv'
 import ViewCarouselIcon from '@material-ui/icons/ViewCarousel'
@@ -16,17 +16,17 @@ const useStyles = makeStyles((theme) => ({
   cardContent: {
     display: 'flex',
   },
-  blue: {
-    color: theme.palette.getContrastText(blue[900]),
-    backgroundColor: blue[900],
+  indigo: {
+    color: theme.palette.getContrastText(indigo[900]),
+    backgroundColor: indigo[900],
   },
-  pink: {
-    color: theme.palette.getContrastText(pink[500]),
-    backgroundColor: pink[500],
+  orange: {
+    color: theme.palette.getContrastText(orange[900]),
+    backgroundColor: orange[900],
   },
   green: {
-    color: theme.palette.getContrastText(green[500]),
-    backgroundColor: green[500],
+    color: theme.palette.getContrastText(green[900]),
+    backgroundColor: green[900],
   },
 }))
 
@@ -37,11 +37,11 @@ const ListItem = ({ entity, goToDetails }) => {
   switch (entity.Type) {
     case 'movie':
       avatar = <MovieIcon />
-      avatarClass = classes.blue
+      avatarClass = classes.indigo
       break
     case 'series':
       avatar = <ViewCarouselIcon />
-      avatarClass = classes.pink
+      avatarClass = classes.orange
       break
     default:
       avatar = <TvIcon />
