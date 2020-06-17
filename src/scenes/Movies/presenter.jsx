@@ -1,18 +1,35 @@
 import React from 'react'
 import SearchForm from './components/SearchForm'
 import FilterForm from './components/FilterForm'
-import ListItem from './components/ListItem'
+import SearchMetaData from './components/SearchMetaData'
+import List from './components/List'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import Divider from '@material-ui/core/Divider'
 
 const Movies = ({ entities, totalEntities, error, loading }) => {
   return (
-    <div>
-      <SearchForm />
-      <FilterForm />
-      <pre>{JSON.stringify({ totalEntities, error, loading }, null, 2)}</pre>
-      {entities.map((entity) => (
-        <ListItem key={entity.imdbID} entity={entity} />
-      ))}
-    </div>
+    <>
+      <Typography variant='h2' gutterBottom>
+        <span role='img' aria-label='popcorn emoji'>
+          🍿
+        </span>
+        Movies
+      </Typography>
+      <Box mb={3}>
+        <SearchForm />
+      </Box>
+      {/* <FilterForm /> */}
+      {(!!totalEntities || error) && <Divider />}
+      <Box mt={2} mb={5}>
+        <SearchMetaData
+          totalEntities={totalEntities}
+          error={error}
+          loading={loading}
+        />
+      </Box>
+      <List entities={entities} />
+    </>
   )
 }
 
