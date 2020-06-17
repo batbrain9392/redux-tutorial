@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchForm from './components/SearchForm'
+import Description from './components/Description'
 import FilterForm from './components/FilterForm'
 import SearchMetaData from './components/SearchMetaData'
 import List from './components/List'
@@ -21,21 +22,16 @@ const Movies = ({ entities, totalEntities, error, loading }) => {
         <Box mb={3}>
           <SearchForm />
         </Box>
-        {/* <FilterForm /> */}
       </Container>
       {!totalEntities && !error ? (
         <Container>
           <Box mt={3}>
-            <Typography variant='subtitle1'>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse
-              dolorum provident tenetur. Totam aperiam quisquam in, nam
-              excepturi corporis illum corrupti at incidunt aliquam explicabo
-              molestias? Quisquam ab vero suscipit.
-            </Typography>
+            <Description />
           </Box>
         </Container>
       ) : (
         <>
+          {/* <FilterForm /> */}
           <Divider />
           <Container>
             <Box mt={3} mb={5}>
