@@ -5,40 +5,50 @@ const sliceName = 'movie'
 
 export const fetchMoviesBySearch = createAsyncThunk(
   `${sliceName}/fetchMoviesBySearch`,
-  async (searchTerm = '', page = 1, type = '', year = '') => {
+  async ({ searchTerm, page, type, year }) => {
     const response = await movieAPI.fetchBySearch(searchTerm, page, type, year)
-    return { ...response, searchTerm }
+
+    if (response.Response === 'True') return response
+    else {
+      throw new Error(response.Error)
+    }
   }
 )
 
 export const slice = createSlice({
   name: sliceName,
   initialState: {
-    searchTerm: '',
     entities: [],
     totalEntities: 0,
-    error: null,
+    error: '',
     loading: false,
+  },
+  reducers: {
+    resetMovies: (state) => ({
+      ...state,
+      entities: [],
+      totalEntities: 0,
+    }),
   },
   extraReducers: {
     [fetchMoviesBySearch.pending]: (state) => {
-      state.searchTerm = ''
       state.entities = []
       state.totalEntities = 0
-      state.error = null
+      state.error = ''
       state.loading = true
     },
     [fetchMoviesBySearch.fulfilled]: (state, action) => {
-      state.searchTerm = action.payload.searchTerm
       state.entities = action.payload.Search
       state.totalEntities = action.payload.totalResults
       state.loading = false
     },
     [fetchMoviesBySearch.rejected]: (state, action) => {
-      state.error = action.error
+      state.error = action.error.message
       state.loading = false
     },
   },
 })
+
+export const { resetMovies } = slice.actions
 
 export default slice.reducer
