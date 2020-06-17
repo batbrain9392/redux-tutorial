@@ -27,10 +27,12 @@ export const slice = createSlice({
     setType: (state, action) => ({
       ...state,
       type: action.payload,
+      page: 1,
     }),
     resetType: (state) => ({
       ...state,
       type: '',
+      page: 1,
     }),
   },
 })
