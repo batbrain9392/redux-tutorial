@@ -35,17 +35,17 @@ export const slice = createSlice({
   },
   extraReducers: {
     [fetchMoviesBySearch.pending]: (state) => {
-      state.entities = []
-      state.totalEntities = 0
-      state.error = ''
       state.loading = true
     },
     [fetchMoviesBySearch.fulfilled]: (state, action) => {
       state.entities = action.payload.Search
       state.totalEntities = action.payload.totalResults
+      state.error = ''
       state.loading = false
     },
     [fetchMoviesBySearch.rejected]: (state, action) => {
+      state.entities = []
+      state.totalEntities = 0
       state.error = action.error.message
       state.loading = false
     },
