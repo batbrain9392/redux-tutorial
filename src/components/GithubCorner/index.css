@@ -16,6 +16,7 @@
     transform: rotate(10deg);
   }
 }
+
 @media (max-width: 500px) {
   .github-corner:hover .octo-arm {
     animation: none;
