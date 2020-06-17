@@ -3,7 +3,7 @@ import './index.css'
 
 const GithubCorner = ({
   url = 'https://github.com/batbrain9392',
-  fill = '#1db954',
+  fill = '#24292e',
   color = '#fff',
 }) => {
   return (
