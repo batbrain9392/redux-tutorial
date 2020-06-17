@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import rootReducer from './rootReducer'
+import filter from './services/filter/slice'
+import movie from './services/movie/slice'
 
 const middleware = getDefaultMiddleware()
 if (process.env.NODE_ENV !== 'production') {
@@ -8,6 +9,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default configureStore({
-  reducer: rootReducer,
+  reducer: {
+    filter,
+    movie,
+  },
   middleware,
 })
