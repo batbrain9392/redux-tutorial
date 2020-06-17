@@ -14,7 +14,11 @@ const fetchBySearch = async (
       y: year,
     },
   })
-  return data
+  const { Response: response, Error: error, ...result } = data
+
+  if (response === 'False') throw new Error(error)
+
+  return result
 }
 
 const fetchByID = async (id) => {
