@@ -28,7 +28,11 @@ const fetchByID = async (id) => {
       plot: 'full',
     },
   })
-  return data
+  const { Response: response, Error: error, ...result } = data
+
+  if (response === 'False') throw new Error(error)
+
+  return result
 }
 
 export default {
