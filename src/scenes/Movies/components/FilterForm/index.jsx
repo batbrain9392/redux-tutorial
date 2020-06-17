@@ -1,29 +1,29 @@
 import React from 'react'
 import FilterForm from './presenter'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
-import { setFilters, resetFilters } from '../../../../services/filter/slice'
+import { setType, resetType } from '../../../../services/filter/slice'
 import { fetchMoviesBySearch } from '../../../../services/movie/slice'
 
 export default () => {
-  const { searchTerm, page, type, year } = useSelector(
+  const { searchTerm, page, type } = useSelector(
     (state) => state.filter,
     shallowEqual
   )
   const dispatch = useDispatch()
 
-  const onFilterHandler = (type, year) => {
-    dispatch(setFilters({ type, year }))
-    dispatch(fetchMoviesBySearch({ searchTerm, page, type, year }))
+  const onFilterHandler = (selectedType) => {
+    dispatch(setType(selectedType))
+    dispatch(fetchMoviesBySearch({ searchTerm, page, type: selectedType }))
   }
 
   const onResetFilterHandler = () => {
-    dispatch(resetFilters())
-    dispatch(fetchMoviesBySearch({ searchTerm, page, type, year }))
+    dispatch(resetType())
+    dispatch(fetchMoviesBySearch({ searchTerm, page, type: '' }))
   }
 
   return (
     <FilterForm
-      filterValues={{ type, year }}
+      type={type}
       onFilter={onFilterHandler}
       onResetFilter={onResetFilterHandler}
     />

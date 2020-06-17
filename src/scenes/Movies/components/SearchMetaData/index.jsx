@@ -1,17 +1,11 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
-const SearchMetaData = ({ totalEntities, error, loading }) => {
-  if (loading) return null
-
-  if (error) return null
-
+const SearchMetaData = ({ totalEntities, error }) => {
   return (
-    !!totalEntities && (
-      <Typography variant='body2' color='textSecondary'>
-        {totalEntities} results found
-      </Typography>
-    )
+    <Typography variant='body2' color='textSecondary'>
+      {error ? 'No' : totalEntities} results found
+    </Typography>
   )
 }
 

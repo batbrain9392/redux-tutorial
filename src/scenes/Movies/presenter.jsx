@@ -19,31 +19,27 @@ const Movies = ({ entities, totalEntities, error, loading }) => {
           </span>
           Movies
         </Typography>
-        <Box mb={3}>
-          <SearchForm />
-        </Box>
+        <SearchForm />
       </Container>
       {!totalEntities && !error ? (
-        <Container>
-          <Description />
-        </Container>
+        <Box mt={3}>
+          <Container>
+            <Description />
+          </Container>
+        </Box>
       ) : (
         <>
-          <Container>
-            <Box mb={3}>
+          <Box my={3}>
+            <Container>
               <FilterForm />
-            </Box>
-          </Container>
+            </Container>
+          </Box>
           <Divider />
           <Container>
             <Box mt={3} mb={5}>
-              <SearchMetaData
-                totalEntities={totalEntities}
-                error={error}
-                loading={loading}
-              />
+              <SearchMetaData totalEntities={totalEntities} error={error} />
             </Box>
-            <List entities={entities} />
+            {!!totalEntities && <List entities={entities} />}
           </Container>
         </>
       )}

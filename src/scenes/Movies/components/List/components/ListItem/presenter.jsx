@@ -5,10 +5,10 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import Avatar from '@material-ui/core/Avatar'
-import { indigo, orange, green } from '@material-ui/core/colors'
+import { indigo, orange, green, grey } from '@material-ui/core/colors'
 import MovieIcon from '@material-ui/icons/Movie'
-import TvIcon from '@material-ui/icons/Tv'
 import ViewCarouselIcon from '@material-ui/icons/ViewCarousel'
+import TvIcon from '@material-ui/icons/Tv'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 
@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.getContrastText(green[900]),
     backgroundColor: green[900],
   },
+  grey: {
+    color: theme.palette.getContrastText(grey[700]),
+    backgroundColor: grey[700],
+  },
 }))
 
 const ListItem = ({ entity, goToDetails }) => {
@@ -43,9 +47,13 @@ const ListItem = ({ entity, goToDetails }) => {
       avatar = <ViewCarouselIcon />
       avatarClass = classes.orange
       break
-    default:
+    case 'episode':
       avatar = <TvIcon />
       avatarClass = classes.green
+      break
+    default:
+      avatar = entity.Type.charAt(0).toUpperCase()
+      avatarClass = classes.grey
       break
   }
 
