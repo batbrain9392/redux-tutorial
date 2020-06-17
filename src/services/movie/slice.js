@@ -24,6 +24,7 @@ export const slice = createSlice({
       ...state,
       entities: [],
       totalEntities: 0,
+      error: '',
     }),
   },
   extraReducers: {
