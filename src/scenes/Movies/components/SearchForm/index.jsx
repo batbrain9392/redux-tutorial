@@ -47,6 +47,7 @@ export default () => {
       input={input}
       setInput={setInput}
       error={error}
+      searchTerm={searchTerm}
       onSubmit={onSubmitHandler}
       onReset={onResetHandler}
     />

@@ -1,6 +1,13 @@
 import React from 'react'
 
-const SearchForm = ({ input, setInput, error, onSubmit, onReset }) => {
+const SearchForm = ({
+  input,
+  setInput,
+  error,
+  searchTerm,
+  onSubmit,
+  onReset,
+}) => {
   return (
     <form onSubmit={onSubmit} onReset={onReset}>
       <div>
@@ -14,11 +21,13 @@ const SearchForm = ({ input, setInput, error, onSubmit, onReset }) => {
             🔍
           </span>
         </button>
-        <button type='reset'>
-          <span role='img' aria-label='clear search'>
-            ❌
-          </span>
-        </button>
+        {searchTerm && (
+          <button type='reset'>
+            <span role='img' aria-label='clear search'>
+              ❌
+            </span>
+          </button>
+        )}
       </div>
       <div>{error}</div>
     </form>
