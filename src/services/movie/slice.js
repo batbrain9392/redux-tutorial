@@ -6,12 +6,16 @@ const sliceName = 'movie'
 export const fetchMoviesBySearch = createAsyncThunk(
   `${sliceName}/fetchMoviesBySearch`,
   async ({ searchTerm, page, type, year }) => {
-    const response = await movieAPI.fetchBySearch(searchTerm, page, type, year)
+    const { Response, ...result } = await movieAPI.fetchBySearch(
+      searchTerm,
+      page,
+      type,
+      year
+    )
 
-    if (response.Response === 'True') return response
-    else {
-      throw new Error(response.Error)
-    }
+    if (Response === 'False') throw new Error(response.Error)
+
+    return result
   }
 )
 
