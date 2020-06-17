@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import SearchForm from './presenter'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import {
@@ -16,22 +16,38 @@ export default () => {
     shallowEqual
   )
   const dispatch = useDispatch()
+  const [input, setInput] = useState('')
+  const [error, setError] = useState('')
 
-  const onSearchHandler = (searchTerm) => {
-    dispatch(setSearchTerm(searchTerm))
-    dispatch(fetchMoviesBySearch({ searchTerm, page, type, year }))
+  useEffect(() => {
+    setInput(searchTerm)
+  }, [searchTerm])
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault()
+    setError('')
+    if (input.length < 3) {
+      setError('minimum 3 chars')
+      return
+    }
+    dispatch(setSearchTerm(input))
+    dispatch(fetchMoviesBySearch({ searchTerm: input, page, type, year }))
   }
 
-  const onSearchClear = () => {
+  const onResetHandler = (e) => {
+    e.preventDefault()
+    setError('')
     dispatch(resetSearchTerm())
     dispatch(resetMovies())
   }
 
   return (
     <SearchForm
-      searchTerm={searchTerm}
-      onSearch={onSearchHandler}
-      onSearchClear={onSearchClear}
+      input={input}
+      setInput={setInput}
+      error={error}
+      onSubmit={onSubmitHandler}
+      onReset={onResetHandler}
     />
   )
 }

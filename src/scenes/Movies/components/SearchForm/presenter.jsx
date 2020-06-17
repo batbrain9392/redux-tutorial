@@ -1,31 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-const SearchForm = ({ searchTerm = '', onSearch, onSearchClear }) => {
-  const [input, setInput] = useState('')
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    setInput(searchTerm)
-  }, [searchTerm])
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault()
-    setError('')
-    if (input.length < 3) {
-      setError('minimum 3 chars')
-      return
-    }
-    onSearch(input)
-  }
-
-  const onResetHandler = (e) => {
-    e.preventDefault()
-    setError('')
-    onSearchClear()
-  }
-
+const SearchForm = ({ input, setInput, error, onSubmit, onReset }) => {
   return (
-    <form onSubmit={onSubmitHandler} onReset={onResetHandler}>
+    <form onSubmit={onSubmit} onReset={onReset}>
       <div>
         <input
           type='text'
