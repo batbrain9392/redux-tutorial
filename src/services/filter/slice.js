@@ -8,7 +8,6 @@ export const slice = createSlice({
     searchTerm: '',
     page: 1,
     type: '',
-    year: '',
   },
   reducers: {
     setSearchTerm: (state, action) => ({
@@ -20,21 +19,18 @@ export const slice = createSlice({
       searchTerm: '',
       page: 1,
       type: '',
-      year: '',
     }),
     setPage: (state, action) => ({
       ...state,
       page: action.payload,
     }),
-    setFilters: (state, action) => ({
+    setType: (state, action) => ({
       ...state,
-      type: action.payload.type,
-      year: action.payload.year,
+      type: action.payload,
     }),
-    resetFilters: (state) => ({
+    resetType: (state) => ({
       ...state,
       type: '',
-      year: '',
     }),
   },
 })
@@ -43,8 +39,8 @@ export const {
   setSearchTerm,
   resetSearch,
   setPage,
-  setFilters,
-  resetFilters,
+  setType,
+  resetType,
 } = slice.actions
 
 export default slice.reducer
