@@ -16,7 +16,7 @@ export const slice = createSlice({
       searchTerm: action.payload,
       page: 1,
     }),
-    resetSearchTerm: () => ({
+    resetSearch: () => ({
       searchTerm: '',
       page: 1,
       type: '',
@@ -41,7 +41,7 @@ export const slice = createSlice({
 
 export const {
   setSearchTerm,
-  resetSearchTerm,
+  resetSearch,
   setPage,
   setFilters,
   resetFilters,
