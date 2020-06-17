@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Movie from './presenter'
 import moviAPI from '../../services/movie/api'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 export default () => {
   const [movie, setMovie] = useState()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState()
   const { id } = useParams()
+  const history = useHistory()
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -24,5 +25,16 @@ export default () => {
     fetchMovie()
   }, [id])
 
-  return <Movie entity={movie} error={error} loading={loading} />
+  const goBackToMovies = () => {
+    history.push('/')
+  }
+
+  return (
+    <Movie
+      entity={movie}
+      error={error}
+      loading={loading}
+      goBackToMovies={goBackToMovies}
+    />
+  )
 }
