@@ -27,7 +27,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const SearchForm = ({ input, setInput, error, onSubmit, onReset }) => {
+const SearchForm = ({
+  input,
+  setInput,
+  error,
+  searchTerm,
+  onSubmit,
+  onReset,
+}) => {
   const classes = useStyles()
 
   return (
@@ -44,7 +51,7 @@ const SearchForm = ({ input, setInput, error, onSubmit, onReset }) => {
         onChange={(e) => setInput(e.target.value)}
         autoFocus
       />
-      {input && (
+      {searchTerm && (
         <IconButton
           className={classes.iconButton}
           aria-label='clear'
