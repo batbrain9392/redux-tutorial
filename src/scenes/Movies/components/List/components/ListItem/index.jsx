@@ -26,8 +26,10 @@ const ListItem = ({ entity }) => {
         alt={entity.Title}
         src={entity.Poster}
       />
-      <Typography variant='body1' component='div' gutterBottom>
-        <Box fontWeight='fontWeightMedium'>{entity.Title}</Box>
+      <Typography component='div'>
+        <Box fontSize={17} lineHeight='normal' my={1}>
+          {entity.Title}
+        </Box>
       </Typography>
       <Typography variant='body2' color='textSecondary'>
         {`${entity.Type.toUpperCase()} • ${entity.Year}`}
@@ -36,8 +38,10 @@ const ListItem = ({ entity }) => {
   ) : (
     <div>
       <Skeleton variant='rect' height={350} />
-      <Skeleton height={32} />
-      <Skeleton height={24} width='60%' />
+      <Box mt={1} mb={0.5}>
+        <Skeleton height={24} />
+      </Box>
+      <Skeleton height={20} width='60%' />
     </div>
   )
 }

@@ -45,7 +45,9 @@ const Movies = ({ entities, totalEntities, error, loading }) => {
                 loading={loading}
               />
             </Box>
-            <List entities={entities} loading={loading} />
+            <Box mb={10}>
+              <List entities={entities} loading={loading} />
+            </Box>
           </Container>
         </>
       )}
