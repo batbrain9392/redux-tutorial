@@ -9,7 +9,6 @@ export default () => {
     (state) => state.filter,
     shallowEqual
   )
-  const loading = useSelector((state) => state.movie.loading)
   const dispatch = useDispatch()
 
   const onFilterHandler = (selectedType) => {
@@ -24,7 +23,6 @@ export default () => {
 
   return (
     <FilterForm
-      loading={loading}
       type={type}
       onFilter={onFilterHandler}
       onResetFilter={onResetFilterHandler}
