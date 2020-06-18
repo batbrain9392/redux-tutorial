@@ -33,7 +33,7 @@ const FilterForm = ({ loading, type, onFilter, onResetFilter }) => {
 
   return (
     <div className={classes.root}>
-      {loading ? (
+      {!type && loading ? (
         Array.from(new Array(3)).map((_, i) => (
           <Skeleton width={90} height={32} key={i} />
         ))
