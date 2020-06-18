@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
@@ -14,34 +14,43 @@ const useStyles = makeStyles(() => ({
 const ListItem = ({ entity }) => {
   const classes = useStyles()
   const history = useHistory()
+  const [imgLoading, setImgLoading] = useState(true)
 
   const goToDetails = (id) => {
     history.push(`/${id}`)
   }
 
-  return entity ? (
-    <div className={classes.root} onClick={() => goToDetails(entity.imdbID)}>
-      <img
-        style={{ width: '100%', height: 350, objectFit: 'cover' }}
-        alt={entity.Title}
-        src={entity.Poster}
-      />
+  return (
+    <div
+      className={entity ? classes.root : null}
+      onClick={entity ? () => goToDetails(entity.imdbID) : null}>
+      {entity && (
+        <img
+          style={{
+            width: '100%',
+            height: 350,
+            objectFit: 'cover',
+            display: imgLoading ? 'none' : 'block',
+          }}
+          alt={entity.Title}
+          src={entity.Poster}
+          onLoad={() => setImgLoading(false)}
+          onError={() => setImgLoading(false)}
+        />
+      )}
+      {imgLoading && <Skeleton variant='rect' height={350} />}
       <Typography component='div'>
         <Box fontSize={17} lineHeight='normal' my={1}>
-          {entity.Title}
+          {entity ? entity.Title : <Skeleton />}
         </Box>
       </Typography>
       <Typography variant='body2' color='textSecondary'>
-        {`${entity.Type.toUpperCase()} • ${entity.Year}`}
+        {entity ? (
+          `${entity.Type.toUpperCase()} • ${entity.Year}`
+        ) : (
+          <Skeleton width='60%' />
+        )}
       </Typography>
-    </div>
-  ) : (
-    <div>
-      <Skeleton variant='rect' height={350} />
-      <Box mt={1} mb={0.5}>
-        <Skeleton height={24} />
-      </Box>
-      <Skeleton height={20} width='60%' />
     </div>
   )
 }
