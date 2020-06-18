@@ -10,7 +10,7 @@ function App() {
     <>
       <GithubCorner url='https://github.com/batbrain9392/redux-tutorial' />
       <BrowserRouter>
-        <Box mt={5}>
+        <Box mt={5} mb={10}>
           <Switch>
             <Route path='/:id' component={Movie} />
             <Route path='/' exact component={Movies} />
