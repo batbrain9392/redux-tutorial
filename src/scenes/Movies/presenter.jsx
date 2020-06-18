@@ -10,6 +10,8 @@ import Divider from '@material-ui/core/Divider'
 import Container from '@material-ui/core/Container'
 
 const Movies = ({ entities, totalEntities, error, loading }) => {
+  const hasNotSearchedAnything = !(totalEntities || error || loading)
+
   return (
     <>
       <Container>
@@ -21,7 +23,7 @@ const Movies = ({ entities, totalEntities, error, loading }) => {
         </Typography>
         <SearchForm />
       </Container>
-      {!totalEntities && !error ? (
+      {hasNotSearchedAnything ? (
         <Box mt={3}>
           <Container>
             <Description />
@@ -31,15 +33,19 @@ const Movies = ({ entities, totalEntities, error, loading }) => {
         <>
           <Box my={3}>
             <Container>
-              <FilterForm />
+              <FilterForm loading={loading} />
             </Container>
           </Box>
           <Divider />
           <Container>
             <Box mt={3} mb={5}>
-              <SearchMetaData totalEntities={totalEntities} error={error} />
+              <SearchMetaData
+                totalEntities={totalEntities}
+                error={error}
+                loading={loading}
+              />
             </Box>
-            {!!totalEntities && <List entities={entities} />}
+            <List entities={entities} loading={loading} />
           </Container>
         </>
       )}
