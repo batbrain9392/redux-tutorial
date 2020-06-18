@@ -4,18 +4,19 @@ import ViewCarouselIcon from '@material-ui/icons/ViewCarousel'
 import TvIcon from '@material-ui/icons/Tv'
 import { makeStyles } from '@material-ui/core/styles'
 import Chip from './components/Chip'
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     '& > *': {
-      marginRight: theme.spacing(0.5),
+      marginRight: theme.spacing(1),
     },
   },
 }))
 
-const FilterForm = ({ type, onFilter, onResetFilter }) => {
+const FilterForm = ({ loading, type, onFilter, onResetFilter }) => {
   const classes = useStyles()
 
   const onClickHandler = (selectedType) => {
@@ -32,30 +33,41 @@ const FilterForm = ({ type, onFilter, onResetFilter }) => {
 
   return (
     <div className={classes.root}>
-      <Chip
-        value='movie'
-        label='Movie'
-        icon={<MovieIcon />}
-        type={type}
-        onClick={onClickHandler}
-        onDelete={onDeleteHandler}
-      />
-      <Chip
-        value='series'
-        label='Series'
-        icon={<ViewCarouselIcon />}
-        type={type}
-        onClick={onClickHandler}
-        onDelete={onDeleteHandler}
-      />
-      <Chip
-        value='episode'
-        label='Episode'
-        icon={<TvIcon />}
-        type={type}
-        onClick={onClickHandler}
-        onDelete={onDeleteHandler}
-      />
+      {loading ? (
+        Array.from(new Array(3)).map((_, i) => (
+          <Skeleton width={90} height={32} key={i} />
+        ))
+      ) : (
+        <>
+          <Chip
+            loading={loading}
+            value='movie'
+            label='Movie'
+            icon={<MovieIcon />}
+            type={type}
+            onClick={onClickHandler}
+            onDelete={onDeleteHandler}
+          />
+          <Chip
+            loading={loading}
+            value='series'
+            label='Series'
+            icon={<ViewCarouselIcon />}
+            type={type}
+            onClick={onClickHandler}
+            onDelete={onDeleteHandler}
+          />
+          <Chip
+            loading={loading}
+            value='episode'
+            label='Episode'
+            icon={<TvIcon />}
+            type={type}
+            onClick={onClickHandler}
+            onDelete={onDeleteHandler}
+          />
+        </>
+      )}
     </div>
   )
 }

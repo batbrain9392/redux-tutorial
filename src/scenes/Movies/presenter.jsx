@@ -33,7 +33,7 @@ const Movies = ({ entities, totalEntities, error, loading }) => {
         <>
           <Box my={3}>
             <Container>
-              <FilterForm loading={loading} />
+              <FilterForm />
             </Container>
           </Box>
           <Divider />
