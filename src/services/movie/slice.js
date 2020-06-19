@@ -1,13 +1,21 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import movieAPI from './api'
+import { getSource } from '../axios'
 
 const sliceName = 'movie'
 
 export const fetchMoviesBySearch = createAsyncThunk(
   `${sliceName}/fetchMoviesBySearch`,
-  async (_, { getState }) => {
+  async (_, { getState, signal }) => {
+    const source = getSource()
+    signal.addEventListener('abort', () => source.cancel())
     const { searchTerm, page, type } = getState().filter
-    const result = await movieAPI.fetchBySearch(searchTerm, page, type)
+    const result = await movieAPI.fetchBySearch(
+      searchTerm,
+      page,
+      type,
+      source.token
+    )
     return result
   }
 )
