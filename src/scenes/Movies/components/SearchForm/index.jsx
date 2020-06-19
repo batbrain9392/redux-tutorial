@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import SearchForm from './presenter'
 import { useSelector, useDispatch } from 'react-redux'
 import { resetSearch, search } from '../../../../services/filter/slice'
@@ -8,6 +8,7 @@ export default () => {
   const dispatch = useDispatch()
   const [input, setInput] = useState('')
   const [error, setError] = useState()
+  const previousRequest = useRef()
 
   useEffect(() => {
     setInput(searchTerm)
@@ -15,12 +16,15 @@ export default () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault()
+    if (previousRequest.current) {
+      previousRequest.current.abort()
+    }
     setError('')
     if (input.length < 3) {
       setError('minimum 3 chars')
       return
     }
-    dispatch(search(input))
+    previousRequest.current = dispatch(search(input))
   }
 
   const onResetHandler = (e) => {
