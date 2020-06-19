@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/batbrain9392/redux-tutorial/static/css/main.d1699770.chunk.css",
+    "main.js": "/batbrain9392/redux-tutorial/static/js/main.fd795575.chunk.js",
+    "main.js.map": "/batbrain9392/redux-tutorial/static/js/main.fd795575.chunk.js.map",
+    "runtime-main.js": "/batbrain9392/redux-tutorial/static/js/runtime-main.e5f0bc08.js",
+    "runtime-main.js.map": "/batbrain9392/redux-tutorial/static/js/runtime-main.e5f0bc08.js.map",
+    "static/js/2.7c403822.chunk.js": "/batbrain9392/redux-tutorial/static/js/2.7c403822.chunk.js",
+    "static/js/2.7c403822.chunk.js.map": "/batbrain9392/redux-tutorial/static/js/2.7c403822.chunk.js.map",
+    "index.html": "/batbrain9392/redux-tutorial/index.html",
+    "precache-manifest.ac9dece95d404b6adc2145c82f71c12a.js": "/batbrain9392/redux-tutorial/precache-manifest.ac9dece95d404b6adc2145c82f71c12a.js",
+    "service-worker.js": "/batbrain9392/redux-tutorial/service-worker.js",
+    "static/css/main.d1699770.chunk.css.map": "/batbrain9392/redux-tutorial/static/css/main.d1699770.chunk.css.map",
+    "static/js/2.7c403822.chunk.js.LICENSE.txt": "/batbrain9392/redux-tutorial/static/js/2.7c403822.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e5f0bc08.js",
+    "static/js/2.7c403822.chunk.js",
+    "static/css/main.d1699770.chunk.css",
+    "static/js/main.fd795575.chunk.js"
+  ]
+}
