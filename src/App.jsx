@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import Movie from './scenes/Movie'
 import Movies from './scenes/Movies'
 import GithubCorner from './components/GithubCorner'
@@ -9,14 +9,14 @@ function App() {
   return (
     <>
       <GithubCorner url='https://github.com/batbrain9392/redux-tutorial' />
-      <BrowserRouter>
+      <Router>
         <Box mt={5} mb={10}>
           <Switch>
             <Route path='/:id' component={Movie} />
             <Route path='/' exact component={Movies} />
           </Switch>
         </Box>
-      </BrowserRouter>
+      </Router>
     </>
   )
 }
