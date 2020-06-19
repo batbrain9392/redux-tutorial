@@ -1,7 +1,5 @@
 import axios from '../axios'
 
-const handleError = (error) => console.error('[API]', error)
-
 const fetchBySearch = async (searchTerm = '', page = 1, type = '') => {
   const { data } = await axios.get('/', {
     params: {
@@ -13,24 +11,23 @@ const fetchBySearch = async (searchTerm = '', page = 1, type = '') => {
   const { Response: response, Error: error, ...result } = data
 
   if (response === 'False') {
-    handleError(error)
     throw new Error('No results found')
   }
 
   return result
 }
 
-const fetchByID = async (id) => {
+const fetchByID = async (id, cancelToken) => {
   const { data } = await axios.get('/', {
     params: {
       i: id,
       plot: 'full',
     },
+    cancelToken,
   })
   const { Response: response, Error: error, ...result } = data
 
   if (response === 'False') {
-    handleError(error)
     throw new Error('No result found')
   }
 

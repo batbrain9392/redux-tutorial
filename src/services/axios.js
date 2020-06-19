@@ -14,4 +14,6 @@ axios.interceptors.request.use(
   }
 )
 
+export const getSource = () => axios.CancelToken.source()
+
 export default axios

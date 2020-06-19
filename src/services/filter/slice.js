@@ -40,12 +40,9 @@ const {
   setTypeState,
 } = slice.actions
 
-export const search = (searchTerm) => async (dispatch, getState) => {
+export const search = (searchTerm) => async (dispatch) => {
   dispatch(setSearchTerm(searchTerm))
-  const {
-    filter: { page, type },
-  } = getState()
-  dispatch(fetchMoviesBySearch({ searchTerm, page, type }))
+  dispatch(fetchMoviesBySearch())
 }
 
 export const resetSearch = () => async (dispatch) => {
@@ -53,20 +50,14 @@ export const resetSearch = () => async (dispatch) => {
   dispatch(resetMovies())
 }
 
-export const setPage = (page) => async (dispatch, getState) => {
+export const setPage = (page) => async (dispatch) => {
   dispatch(setPageState(page))
-  const {
-    filter: { searchTerm, type },
-  } = getState()
-  dispatch(fetchMoviesBySearch({ searchTerm, page, type }))
+  dispatch(fetchMoviesBySearch())
 }
 
-export const setType = (type) => async (dispatch, getState) => {
+export const setType = (type) => async (dispatch) => {
   dispatch(setTypeState(type))
-  const {
-    filter: { searchTerm, page },
-  } = getState()
-  dispatch(fetchMoviesBySearch({ searchTerm, page, type }))
+  dispatch(fetchMoviesBySearch())
 }
 
 export default slice.reducer
