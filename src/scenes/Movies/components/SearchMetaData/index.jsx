@@ -7,7 +7,7 @@ const SearchMetaData = ({ totalEntities, error, loading }) => {
     <Skeleton height={20} width='25%' />
   ) : (
     <Typography variant='body2' color='textSecondary'>
-      {error ? 'No' : totalEntities} results found
+      {error || `${totalEntities} results found`}
     </Typography>
   )
 }

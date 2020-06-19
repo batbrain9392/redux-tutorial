@@ -14,7 +14,7 @@ const fetchBySearch = async (searchTerm = '', page = 1, type = '') => {
 
   if (response === 'False') {
     handleError(error)
-    throw new Error(error)
+    throw new Error('No results found')
   }
 
   return result
@@ -31,7 +31,7 @@ const fetchByID = async (id) => {
 
   if (response === 'False') {
     handleError(error)
-    throw new Error(error)
+    throw new Error('No result found')
   }
 
   return result
