@@ -8,37 +8,41 @@ export const slice = createSlice({
     searchTerm: '',
     page: 1,
     type: '',
-    year: '',
   },
   reducers: {
     setSearchTerm: (state, action) => ({
       ...state,
       searchTerm: action.payload,
+      page: 1,
     }),
-    resetSearchTerm: (state) => ({
-      ...state,
+    resetSearch: () => ({
       searchTerm: '',
-    }),
-    setFilters: (state, action) => ({
-      ...state,
-      page: action.payload.page,
-      type: action.payload.type,
-      year: action.payload.year,
-    }),
-    resetFilters: (state) => ({
-      ...state,
       page: 1,
       type: '',
-      year: '',
+    }),
+    setPage: (state, action) => ({
+      ...state,
+      page: action.payload,
+    }),
+    setType: (state, action) => ({
+      ...state,
+      type: action.payload,
+      page: 1,
+    }),
+    resetType: (state) => ({
+      ...state,
+      type: '',
+      page: 1,
     }),
   },
 })
 
 export const {
   setSearchTerm,
-  resetSearchTerm,
-  setFilters,
-  resetFilters,
+  resetSearch,
+  setPage,
+  setType,
+  resetType,
 } = slice.actions
 
 export default slice.reducer
