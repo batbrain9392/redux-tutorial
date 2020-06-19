@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://www.omdbapi.com/'
+axios.defaults.baseURL = 'https://www.omdbapi.com/'
 axios.interceptors.request.use(
   (config) => {
     config.params = {
