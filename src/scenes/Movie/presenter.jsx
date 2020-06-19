@@ -1,15 +1,28 @@
 import React from 'react'
+import Container from '@material-ui/core/Container'
+import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import Body from './components/Body'
 
-const Movie = ({ entity, error, loading, goBackToMovies }) => {
+const Movie = ({ entity, error }) => {
   return (
-    <div>
-      <button onClick={goBackToMovies}>
-        <span role='img' aria-label='back'>
-          🔙
-        </span>
-      </button>
-      <pre>{JSON.stringify({ entity, error, loading }, null, 2)}</pre>
-    </div>
+    <Container>
+      <Box mb={5}>
+        <Button startIcon={<ArrowBackIosIcon />} component={Link} to='/'>
+          Back to search
+        </Button>
+      </Box>
+      {error ? (
+        <Typography variant='body1' color='textSecondary'>
+          {error}
+        </Typography>
+      ) : (
+        <Body entity={entity} />
+      )}
+    </Container>
   )
 }
 

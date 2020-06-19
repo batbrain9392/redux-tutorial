@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import SearchForm from './presenter'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
-import {
-  setSearchTerm,
-  resetSearchTerm,
-} from '../../../../services/filter/slice'
+import { setSearchTerm, resetSearch } from '../../../../services/filter/slice'
 import {
   fetchMoviesBySearch,
   resetMovies,
 } from '../../../../services/movie/slice'
 
 export default () => {
-  const { searchTerm, page, type, year } = useSelector(
+  const { searchTerm, page, type } = useSelector(
     (state) => state.filter,
     shallowEqual
   )
@@ -31,14 +28,14 @@ export default () => {
       return
     }
     dispatch(setSearchTerm(input))
-    dispatch(fetchMoviesBySearch({ searchTerm: input, page, type, year }))
+    dispatch(fetchMoviesBySearch({ searchTerm: input, page, type }))
   }
 
   const onResetHandler = (e) => {
     e.preventDefault()
     setInput('')
     setError()
-    dispatch(resetSearchTerm())
+    dispatch(resetSearch())
     dispatch(resetMovies())
   }
 
