@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { fetchMoviesBySearch, resetMovies } from '../movie/slice'
 
 const sliceName = 'filter'
 
@@ -15,34 +16,57 @@ export const slice = createSlice({
       searchTerm: action.payload,
       page: 1,
     }),
-    resetSearch: () => ({
+    resetFilters: () => ({
       searchTerm: '',
       page: 1,
       type: '',
     }),
-    setPage: (state, action) => ({
+    setPageState: (state, action) => ({
       ...state,
       page: action.payload,
     }),
-    setType: (state, action) => ({
+    setTypeState: (state, action) => ({
       ...state,
       type: action.payload,
-      page: 1,
-    }),
-    resetType: (state) => ({
-      ...state,
-      type: '',
       page: 1,
     }),
   },
 })
 
-export const {
+const {
   setSearchTerm,
-  resetSearch,
-  setPage,
-  setType,
-  resetType,
+  resetFilters,
+  setPageState,
+  setTypeState,
 } = slice.actions
+
+export const search = (searchTerm) => async (dispatch, getState) => {
+  dispatch(setSearchTerm(searchTerm))
+  const {
+    filter: { page, type },
+  } = getState()
+  dispatch(fetchMoviesBySearch({ searchTerm, page, type }))
+}
+
+export const resetSearch = () => async (dispatch) => {
+  dispatch(resetFilters())
+  dispatch(resetMovies())
+}
+
+export const setPage = (page) => async (dispatch, getState) => {
+  dispatch(setPageState(page))
+  const {
+    filter: { searchTerm, type },
+  } = getState()
+  dispatch(fetchMoviesBySearch({ searchTerm, page, type }))
+}
+
+export const setType = (type) => async (dispatch, getState) => {
+  dispatch(setTypeState(type))
+  const {
+    filter: { searchTerm, page },
+  } = getState()
+  dispatch(fetchMoviesBySearch({ searchTerm, page, type }))
+}
 
 export default slice.reducer
