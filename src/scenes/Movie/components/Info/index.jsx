@@ -10,7 +10,7 @@ const Info = ({ label, value, first }) => {
         <Typography variant='body1'>
           <Box component='span' display='flex'>
             <Box component='span' fontWeight='fontWeightBold' mr={1.5}>
-              {`${label}:`}
+              {label}:
             </Box>
             <span>{value}</span>
           </Box>
