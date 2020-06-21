@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Skeleton from '@material-ui/lab/Skeleton'
 
-const ImageWithLoading = ({ src, alt, height }) => {
+const ImageWithLoading = ({ src, alt }) => {
   const [imgLoading, setImgLoading] = useState(true)
 
   return (
@@ -11,7 +11,7 @@ const ImageWithLoading = ({ src, alt, height }) => {
           style={{
             width: '100%',
             display: imgLoading ? 'none' : 'block',
-            height: height || 'auto',
+            height: '100%',
             objectFit: 'cover',
           }}
           src={src}
@@ -20,7 +20,7 @@ const ImageWithLoading = ({ src, alt, height }) => {
           onError={() => setImgLoading(false)}
         />
       )}
-      {imgLoading && <Skeleton variant='rect' height={height || 350} />}
+      {imgLoading && <Skeleton variant='rect' height='100%' />}
     </>
   )
 }
