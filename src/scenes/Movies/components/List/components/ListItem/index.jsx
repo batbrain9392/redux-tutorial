@@ -5,14 +5,23 @@ import Box from '@material-ui/core/Box'
 import Skeleton from '@material-ui/lab/Skeleton'
 import { makeStyles } from '@material-ui/core/styles'
 import ImageWithLoading from '../../../../../../components/ImageWithLoading'
+import ButtonBase from '@material-ui/core/ButtonBase'
+import grey from '@material-ui/core/colors/grey'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    cursor: 'pointer',
+    display: 'grid',
+    gridTemplateRows: '350px max-content auto',
+    justifyContent: 'normal',
+    alignItems: 'start',
+    gridRowGap: theme.spacing(1),
+    '&:hover, &:focus': {
+      backgroundColor: grey['300'],
+    },
   },
 }))
 
-const ListItem = ({ entity }) => {
+const ListItem = ({ entity, focus }) => {
   const classes = useStyles()
   const history = useHistory()
 
@@ -21,23 +30,26 @@ const ListItem = ({ entity }) => {
   }
 
   return (
-    <div
-      className={entity ? classes.root : null}
+    <ButtonBase
+      autoFocus={!!entity && focus}
+      className={classes.root}
       onClick={entity ? () => goToDetails(entity.imdbID) : null}>
-      <ImageWithLoading src={entity?.Poster} alt={entity?.Title} height={350} />
+      <ImageWithLoading src={entity?.Poster} alt={entity?.Title} />
       <Typography component='div'>
-        <Box fontSize={17} lineHeight='normal' my={1}>
+        <Box fontSize={17} lineHeight='normal' mt={1} px={1}>
           {entity ? entity.Title : <Skeleton />}
         </Box>
       </Typography>
-      <Typography variant='body2' color='textSecondary'>
-        {entity ? (
-          `${entity.Type.toUpperCase()} • ${entity.Year}`
-        ) : (
-          <Skeleton width='60%' />
-        )}
+      <Typography variant='body2' color='textSecondary' component='div'>
+        <Box px={1} mb={2}>
+          {entity ? (
+            `${entity.Type.toUpperCase()} • ${entity.Year}`
+          ) : (
+            <Skeleton width='60%' />
+          )}
+        </Box>
       </Typography>
-    </div>
+    </ButtonBase>
   )
 }
 
