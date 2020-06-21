@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Pagination from './presenter'
 import { useSelector, useDispatch } from 'react-redux'
 import { setPage } from '../../../../../../services/filter/slice'
@@ -9,9 +9,13 @@ export default () => {
     Math.ceil(state.movie.totalEntities / 10)
   )
   const dispatch = useDispatch()
+  const previousRequest = useRef()
 
   const onPageChangeHandler = (_, selectedPage) => {
-    dispatch(setPage(selectedPage))
+    if (previousRequest.current) {
+      previousRequest.current.abort()
+    }
+    previousRequest.current = dispatch(setPage(selectedPage))
   }
 
   return (

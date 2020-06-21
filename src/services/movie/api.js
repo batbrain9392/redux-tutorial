@@ -1,12 +1,18 @@
 import axios from '../axios'
 
-const fetchBySearch = async (searchTerm = '', page = 1, type = '') => {
+const fetchBySearch = async (
+  searchTerm = '',
+  page = 1,
+  type = '',
+  cancelToken
+) => {
   const { data } = await axios.get('/', {
     params: {
       s: searchTerm,
       page,
       type,
     },
+    cancelToken,
   })
   const { Response: response, Error: error, ...result } = data
 
