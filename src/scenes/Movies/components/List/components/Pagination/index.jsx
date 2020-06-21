@@ -16,6 +16,7 @@ export default () => {
       previousRequest.current.abort()
     }
     previousRequest.current = dispatch(setPage(selectedPage))
+    window.scrollTo(0, 0)
   }
 
   return (

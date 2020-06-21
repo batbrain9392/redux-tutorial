@@ -4,14 +4,12 @@ import Movie from './scenes/Movie'
 import Movies from './scenes/Movies'
 import GithubCorner from './components/GithubCorner'
 import Box from '@material-ui/core/Box'
-import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <>
       <GithubCorner url='https://github.com/batbrain9392/redux-tutorial' />
       <Router>
-        <ScrollToTop />
         <Box mt={5} mb={10}>
           <Switch>
             <Route path='/:id' component={Movie} />

@@ -16,11 +16,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'start',
     gridRowGap: theme.spacing(1),
     '&:hover, &:focus': {
-      boxShadow: `
-        rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
-        rgba(0, 0, 0, 0.14) 0px 1px 1px 0px,
-        rgba(0, 0, 0, 0.12) 0px 1px 3px 0px`,
-      backgroundColor: grey['200'],
+      backgroundColor: grey['300'],
     },
   },
 }))
@@ -44,7 +40,7 @@ const ListItem = ({ entity, focus }) => {
           {entity ? entity.Title : <Skeleton />}
         </Box>
       </Typography>
-      <Typography variant='body2' color='textSecondary'>
+      <Typography variant='body2' color='textSecondary' component='div'>
         <Box px={1} mb={2}>
           {entity ? (
             `${entity.Type.toUpperCase()} • ${entity.Year}`
