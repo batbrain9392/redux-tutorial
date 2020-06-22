@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 import SearchForm from './presenter'
 import { useSelector, useDispatch } from 'react-redux'
-import { resetSearch, search } from '../../../../services/filter/slice'
+import { resetSearch } from '../../../../services/filter/slice'
+import { useHistory } from 'react-router-dom'
 
 export default () => {
   const searchTerm = useSelector((state) => state.filter.searchTerm)
   const dispatch = useDispatch()
   const [input, setInput] = useState('')
   const [error, setError] = useState()
-  const previousRequest = useRef()
   const inputRef = useRef(null)
+  const history = useHistory()
 
   useEffect(() => {
     setInput(searchTerm)
@@ -22,16 +23,9 @@ export default () => {
       setError('Minimum 3 chars')
       return
     }
-    if (inputRef.current) {
-      inputRef.current.blur()
-    }
-    if (input === searchTerm) {
-      return
-    }
-    if (previousRequest.current) {
-      previousRequest.current.abort()
-    }
-    previousRequest.current = dispatch(search(input))
+    if (inputRef.current) inputRef.current.blur()
+    if (input === searchTerm) return
+    history.push(`/?search=${input}`)
   }
 
   const onResetHandler = (e) => {
