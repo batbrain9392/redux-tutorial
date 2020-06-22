@@ -4,38 +4,31 @@ import Description from './components/Description'
 import FilterForm from './components/FilterForm'
 import SearchMetaData from './components/SearchMetaData'
 import List from './components/List'
-import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import Divider from '@material-ui/core/Divider'
 import Container from '@material-ui/core/Container'
 
 const Movies = ({ entities, totalEntities, error, loading }) => {
-  const hasNotSearchedAnything = !(totalEntities || error || loading)
+  const hasNotSearchedAnything = !(loading || error || totalEntities)
 
   return (
     <>
       <Container>
-        <Typography variant='h2' gutterBottom>
-          <span role='img' aria-label='popcorn emoji'>
-            🍿
-          </span>
-          Movies
-        </Typography>
         <SearchForm />
       </Container>
       {hasNotSearchedAnything ? (
-        <Box mt={3}>
-          <Container>
+        <Container>
+          <Box mt={3}>
             <Description />
-          </Container>
-        </Box>
+          </Box>
+        </Container>
       ) : (
         <>
-          <Box my={3}>
-            <Container>
+          <Container>
+            <Box my={3}>
               <FilterForm />
-            </Container>
-          </Box>
+            </Box>
+          </Container>
           <Divider />
           <Container>
             <Box mt={3} mb={5}>
