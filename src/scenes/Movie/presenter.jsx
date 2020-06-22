@@ -8,7 +8,7 @@ import Box from '@material-ui/core/Box'
 import Body from './components/Body'
 import ScrollToTop from '../../components/ScrollToTop'
 
-const Movie = ({ entity, error }) => {
+const Movie = ({ entity, error, loading }) => {
   return (
     <>
       <ScrollToTop />
@@ -23,7 +23,7 @@ const Movie = ({ entity, error }) => {
             {error}
           </Typography>
         ) : (
-          <Body entity={entity} />
+          <Body entity={entity} loading={loading} />
         )}
       </Container>
     </>

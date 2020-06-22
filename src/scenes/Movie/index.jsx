@@ -5,7 +5,7 @@ import { useGetMovie } from './hooks'
 
 export default () => {
   const { id } = useParams()
-  const { data, error } = useGetMovie(id)
+  const { data, error, loading } = useGetMovie(id)
 
-  return <Movie entity={data} error={error} />
+  return <Movie entity={data} error={error} loading={loading} />
 }
