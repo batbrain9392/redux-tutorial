@@ -5,7 +5,6 @@ import InputBase from '@material-ui/core/InputBase'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
-import ClearIcon from '@material-ui/icons/Clear'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
 const useStyles = makeStyles((theme) => ({
@@ -28,24 +27,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const SearchForm = ({
-  inputRef,
-  input,
-  setInput,
-  error,
-  searchTerm,
-  onSubmit,
-  onReset,
-}) => {
+const SearchForm = ({ inputRef, input, setInput, error, onSubmit }) => {
   const classes = useStyles()
 
   return (
     <>
-      <Paper
-        component='form'
-        className={classes.root}
-        onSubmit={onSubmit}
-        onReset={onReset}>
+      <Paper component='form' className={classes.root} onSubmit={onSubmit}>
         <InputBase
           inputRef={inputRef}
           className={classes.input}
@@ -54,14 +41,6 @@ const SearchForm = ({
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        {searchTerm && (
-          <IconButton
-            className={classes.iconButton}
-            aria-label='clear'
-            type='reset'>
-            <ClearIcon />
-          </IconButton>
-        )}
         <Divider className={classes.divider} orientation='vertical' />
         <IconButton
           className={classes.iconButton}

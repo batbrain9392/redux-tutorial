@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import SearchForm from './presenter'
-import { useSelector, useDispatch } from 'react-redux'
-import { resetSearch } from '../../../../services/filter/slice'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 export default () => {
   const searchTerm = useSelector((state) => state.filter.searchTerm)
-  const dispatch = useDispatch()
   const [input, setInput] = useState('')
   const [error, setError] = useState()
   const inputRef = useRef(null)
@@ -28,22 +26,13 @@ export default () => {
     history.push(`/?search=${input}`)
   }
 
-  const onResetHandler = (e) => {
-    e.preventDefault()
-    setInput('')
-    setError()
-    dispatch(resetSearch())
-  }
-
   return (
     <SearchForm
       inputRef={inputRef}
       input={input}
       setInput={setInput}
       error={error}
-      searchTerm={searchTerm}
       onSubmit={onSubmitHandler}
-      onReset={onResetHandler}
     />
   )
 }
