@@ -10,7 +10,7 @@ import Divider from '@material-ui/core/Divider'
 import Container from '@material-ui/core/Container'
 
 const Movies = ({ entities, totalEntities, error, loading }) => {
-  const hasNotSearchedAnything = !(totalEntities || error || loading)
+  const hasNotSearchedAnything = !(loading || error || totalEntities)
 
   return (
     <>
