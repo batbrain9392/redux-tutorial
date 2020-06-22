@@ -20,13 +20,13 @@ export default () => {
     if (previousRequest.current) {
       previousRequest.current.abort()
     }
-    if (inputRef.current) {
-      inputRef.current.blur()
-    }
     setError('')
     if (input.length < 3) {
       setError('minimum 3 chars')
       return
+    }
+    if (inputRef.current) {
+      inputRef.current.blur()
     }
     previousRequest.current = dispatch(search(input))
   }
