@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Skeleton from '@material-ui/lab/Skeleton'
 
@@ -19,4 +19,4 @@ const Plot = ({ entity }) => {
   )
 }
 
-export default Plot
+export default memo(Plot)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Skeleton from '@material-ui/lab/Skeleton'
@@ -20,4 +20,4 @@ const Heading = ({ entity }) => {
   )
 }
 
-export default Heading
+export default memo(Heading)

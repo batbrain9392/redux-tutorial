@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Skeleton from '@material-ui/lab/Skeleton'
@@ -41,4 +41,4 @@ const Rating = ({ entity }) => {
   )
 }
 
-export default Rating
+export default memo(Rating)
