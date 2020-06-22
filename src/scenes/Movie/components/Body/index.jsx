@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box'
 import ImageWithLoading from '../../../../components/ImageWithLoading'
 import Info from '../Info'
 
-const Body = ({ entity }) => {
+const Body = ({ entity, loading }) => {
   return (
     <>
       <Grid container spacing={5}>
@@ -40,9 +40,14 @@ const Body = ({ entity }) => {
             )}
           </Typography>
           <Box mt={3}>
-            <Info label='Director' value={entity?.Director} first />
-            <Info label='Writer' value={entity?.Writer} />
-            <Info label='Actors' value={entity?.Actors} />
+            <Info
+              loading={loading}
+              label='Director'
+              value={entity?.Director}
+              first
+            />
+            <Info loading={loading} label='Writer' value={entity?.Writer} />
+            <Info loading={loading} label='Actors' value={entity?.Actors} />
           </Box>
         </Grid>
       </Grid>
@@ -82,18 +87,44 @@ const Body = ({ entity }) => {
       <Box mt={3}>
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6}>
-            <Info label='Awards' value={entity?.Awards} first />
-            <Info label='Rating' value={entity?.Rated} />
-            <Info label='Release Date' value={entity?.Released} />
-            <Info label='Runtime' value={entity?.Runtime} />
-            <Info label='Genre' value={entity?.Genre} />
+            <Info
+              loading={loading}
+              label='Awards'
+              value={entity?.Awards}
+              first
+            />
+            <Info loading={loading} label='Rating' value={entity?.Rated} />
+            <Info
+              loading={loading}
+              label='Release Date'
+              value={entity?.Released}
+            />
+            <Info loading={loading} label='Runtime' value={entity?.Runtime} />
+            <Info loading={loading} label='Genre' value={entity?.Genre} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Info label='Language' value={entity?.Language} first />
-            <Info label='Country' value={entity?.Country} />
-            <Info label='DVD Release Date' value={entity?.DVD} />
-            <Info label='Box Office Collection' value={entity?.BoxOffice} />
-            <Info label='Production' value={entity?.Production} />
+            <Info
+              loading={loading}
+              label='Language'
+              value={entity?.Language}
+              first
+            />
+            <Info loading={loading} label='Country' value={entity?.Country} />
+            <Info
+              loading={loading}
+              label='DVD Release Date'
+              value={entity?.DVD}
+            />
+            <Info
+              loading={loading}
+              label='Box Office Collection'
+              value={entity?.BoxOffice}
+            />
+            <Info
+              loading={loading}
+              label='Production'
+              value={entity?.Production}
+            />
           </Grid>
         </Grid>
       </Box>

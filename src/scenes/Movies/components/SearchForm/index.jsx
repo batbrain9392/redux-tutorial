@@ -9,6 +9,7 @@ export default () => {
   const [input, setInput] = useState('')
   const [error, setError] = useState()
   const previousRequest = useRef()
+  const inputRef = useRef(null)
 
   useEffect(() => {
     setInput(searchTerm)
@@ -18,6 +19,9 @@ export default () => {
     e.preventDefault()
     if (previousRequest.current) {
       previousRequest.current.abort()
+    }
+    if (inputRef.current) {
+      inputRef.current.blur()
     }
     setError('')
     if (input.length < 3) {
@@ -36,6 +40,7 @@ export default () => {
 
   return (
     <SearchForm
+      inputRef={inputRef}
       input={input}
       setInput={setInput}
       error={error}

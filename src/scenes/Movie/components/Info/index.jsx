@@ -3,8 +3,8 @@ import Box from '@material-ui/core/Box'
 import Skeleton from '@material-ui/lab/Skeleton'
 import Typography from '@material-ui/core/Typography'
 
-const Info = ({ label, value, first }) => {
-  return (
+const Info = ({ loading, label, value, first }) => {
+  return loading || value ? (
     <Box mt={first ? 0 : 2}>
       {value ? (
         <Typography variant='body1'>
@@ -19,7 +19,7 @@ const Info = ({ label, value, first }) => {
         <Skeleton width='80%' />
       )}
     </Box>
-  )
+  ) : null
 }
 
 export default Info
