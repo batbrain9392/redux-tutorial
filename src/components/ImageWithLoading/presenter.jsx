@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Skeleton from '@material-ui/lab/Skeleton'
 import ErrorIcon from '@material-ui/icons/Error'
 import { makeStyles } from '@material-ui/core'
@@ -63,4 +63,4 @@ const ImageWithLoading = ({
   )
 }
 
-export default ImageWithLoading
+export default memo(ImageWithLoading)

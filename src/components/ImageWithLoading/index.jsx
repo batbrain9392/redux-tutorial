@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import ImageWithLoading from './presenter'
 
 export default ({ src, alt, height }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
-  const onLoad = () => {
+  const onLoad = useCallback(() => {
     setIsLoading(false)
     setIsError(false)
-  }
+  }, [])
 
-  const onError = () => {
+  const onError = useCallback(() => {
     setIsLoading(false)
     setIsError(true)
-  }
+  }, [])
 
   return (
     <ImageWithLoading
