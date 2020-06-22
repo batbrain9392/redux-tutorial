@@ -2,14 +2,17 @@ import React, { useState } from 'react'
 import ImageWithLoading from './presenter'
 
 export default ({ src, alt, height }) => {
-  const [imgLoading, setImgLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
 
   const onLoad = () => {
-    setImgLoading(false)
+    setIsLoading(false)
+    setIsError(false)
   }
 
   const onError = () => {
-    setImgLoading(false)
+    setIsLoading(false)
+    setIsError(true)
   }
 
   return (
@@ -17,7 +20,8 @@ export default ({ src, alt, height }) => {
       src={src}
       alt={alt}
       height={height}
-      imgLoading={imgLoading}
+      isLoading={isLoading}
+      isError={isError}
       onLoad={onLoad}
       onError={onError}
     />
