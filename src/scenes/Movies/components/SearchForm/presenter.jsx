@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const SearchForm = ({
+  inputRef,
   input,
   setInput,
   error,
@@ -44,6 +45,7 @@ const SearchForm = ({
       onSubmit={onSubmit}
       onReset={onReset}>
       <InputBase
+        inputRef={inputRef}
         className={classes.input}
         placeholder='Search movies'
         inputProps={{ 'aria-label': 'search movies' }}
