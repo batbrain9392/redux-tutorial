@@ -15,27 +15,21 @@ const Movies = ({ entities, totalEntities, error, loading }) => {
   return (
     <>
       <Container>
-        <Typography variant='h2' gutterBottom>
-          <span role='img' aria-label='popcorn emoji'>
-            🍿
-          </span>
-          Movies
-        </Typography>
         <SearchForm />
       </Container>
       {hasNotSearchedAnything ? (
-        <Box mt={3}>
-          <Container>
+        <Container>
+          <Box mt={3}>
             <Description />
-          </Container>
-        </Box>
+          </Box>
+        </Container>
       ) : (
         <>
-          <Box my={3}>
-            <Container>
+          <Container>
+            <Box my={3}>
               <FilterForm />
-            </Container>
-          </Box>
+            </Box>
+          </Container>
           <Divider />
           <Container>
             <Box mt={3} mb={5}>
