@@ -7,11 +7,7 @@ import reduxLogo from '../../assets/img/redux.svg'
 import { makeStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    paddingBottom: theme.spacing(4),
-    textAlign: 'center',
-  },
+const useStyles = makeStyles(() => ({
   img: {
     height: 24,
     verticalAlign: 'bottom',

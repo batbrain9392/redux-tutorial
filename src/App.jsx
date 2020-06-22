@@ -14,9 +14,13 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateRows: 'max-content auto max-content',
     gridRowGap: theme.spacing(5),
     paddingTop: theme.spacing(5),
+    paddingBottom: theme.spacing(3),
   },
   main: {
     paddingBottom: theme.spacing(5),
+  },
+  footer: {
+    textAlign: 'center',
   },
 }))
 
@@ -37,7 +41,7 @@ const App = () => {
               <Route path='/' exact component={Movies} />
             </Switch>
           </main>
-          <footer>
+          <footer className={classes.footer}>
             <Footer />
           </footer>
         </div>
