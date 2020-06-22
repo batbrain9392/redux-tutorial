@@ -17,16 +17,19 @@ export default () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault()
-    if (previousRequest.current) {
-      previousRequest.current.abort()
+    setError('')
+    if (input.length < 3) {
+      setError('Minimum 3 chars')
+      return
     }
     if (inputRef.current) {
       inputRef.current.blur()
     }
-    setError('')
-    if (input.length < 3) {
-      setError('minimum 3 chars')
+    if (input === searchTerm) {
       return
+    }
+    if (previousRequest.current) {
+      previousRequest.current.abort()
     }
     previousRequest.current = dispatch(search(input))
   }

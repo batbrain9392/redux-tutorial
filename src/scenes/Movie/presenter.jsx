@@ -2,12 +2,12 @@ import React from 'react'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Body from './components/Body'
-import ScrollToTop from '../../components/ScrollToTop'
+import ScrollToTopOnMount from '../../components/ScrollToTopOnMount'
 
 const Movie = ({ entity, error, loading }) => {
   return (
     <>
-      <ScrollToTop />
+      <ScrollToTopOnMount />
       <Container>
         {error ? (
           <Typography variant='body1' color='textSecondary'>

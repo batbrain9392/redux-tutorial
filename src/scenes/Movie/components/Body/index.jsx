@@ -12,7 +12,11 @@ const Body = ({ entity, loading }) => {
     <>
       <Grid container spacing={5}>
         <Grid item xs={12} sm={5} md={3}>
-          <ImageWithLoading src={entity?.Poster} alt={entity?.Title} />
+          <ImageWithLoading
+            src={entity?.Poster}
+            alt={entity?.Title}
+            height={350}
+          />
         </Grid>
         <Grid item xs={12} sm={7} md={9}>
           <Box mb={2}>

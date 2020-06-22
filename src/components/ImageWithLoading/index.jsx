@@ -1,28 +1,25 @@
 import React, { useState } from 'react'
-import Skeleton from '@material-ui/lab/Skeleton'
+import ImageWithLoading from './presenter'
 
-const ImageWithLoading = ({ src, alt }) => {
+export default ({ src, alt, height }) => {
   const [imgLoading, setImgLoading] = useState(true)
 
+  const onLoad = () => {
+    setImgLoading(false)
+  }
+
+  const onError = () => {
+    setImgLoading(false)
+  }
+
   return (
-    <>
-      {src && (
-        <img
-          style={{
-            width: '100%',
-            display: imgLoading ? 'none' : 'block',
-            height: '100%',
-            objectFit: 'cover',
-          }}
-          src={src}
-          alt={alt || 'Movie poster'}
-          onLoad={() => setImgLoading(false)}
-          onError={() => setImgLoading(false)}
-        />
-      )}
-      {imgLoading && <Skeleton variant='rect' height='100%' />}
-    </>
+    <ImageWithLoading
+      src={src}
+      alt={alt}
+      height={height}
+      imgLoading={imgLoading}
+      onLoad={onLoad}
+      onError={onError}
+    />
   )
 }
-
-export default ImageWithLoading
