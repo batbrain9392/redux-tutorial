@@ -26,22 +26,22 @@ const App = () => {
   return (
     <>
       <GithubCorner url='https://github.com/batbrain9392/redux-tutorial' />
-      <div className={classes.root}>
-        <header>
-          <Header />
-        </header>
-        <main className={classes.main}>
-          <Router>
+      <Router>
+        <div className={classes.root}>
+          <header>
+            <Header />
+          </header>
+          <main className={classes.main}>
             <Switch>
               <Route path='/:id' component={Movie} />
               <Route path='/' exact component={Movies} />
             </Switch>
-          </Router>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </div>
+      </Router>
     </>
   )
 }
