@@ -49,7 +49,6 @@ const SearchForm = ({
         inputProps={{ 'aria-label': 'search movies' }}
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        autoFocus
       />
       {searchTerm && (
         <IconButton

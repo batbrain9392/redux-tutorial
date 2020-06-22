@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ListItem = ({ entity, focus }) => {
+const ListItem = ({ entity }) => {
   const classes = useStyles()
   const history = useHistory()
 
@@ -31,7 +31,6 @@ const ListItem = ({ entity, focus }) => {
 
   return (
     <ButtonBase
-      autoFocus={!!entity && focus}
       className={classes.root}
       onClick={entity ? () => goToDetails(entity.imdbID) : null}>
       <ImageWithLoading src={entity?.Poster} alt={entity?.Title} />

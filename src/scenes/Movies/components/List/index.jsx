@@ -20,7 +20,7 @@ const List = ({ entities, loading }) => {
     <>
       <div className={classes.root}>
         {(loading ? Array.from(new Array(3)) : entities).map((entity, i) => (
-          <ListItem entity={entity} key={entity?.imdbID || i} focus={i === 0} />
+          <ListItem entity={entity} key={entity?.imdbID || i} />
         ))}
       </div>
       {!loading && <Pagination />}
