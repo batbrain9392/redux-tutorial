@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, memo } from 'react'
 
 const ScrollToTopOnMount = () => {
   useEffect(() => {
@@ -8,4 +8,4 @@ const ScrollToTopOnMount = () => {
   return null
 }
 
-export default ScrollToTopOnMount
+export default memo(ScrollToTopOnMount)

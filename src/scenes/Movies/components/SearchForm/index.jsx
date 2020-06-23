@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import SearchForm from './presenter'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -14,17 +14,20 @@ export default () => {
     setInput(searchTerm)
   }, [searchTerm])
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault()
-    setError('')
-    if (input.length < 3) {
-      setError('Minimum 3 chars')
-      return
-    }
-    if (inputRef.current) inputRef.current.blur()
-    if (input === searchTerm) return
-    history.push(`/?search=${input}`)
-  }
+  const onSubmitHandler = useCallback(
+    (e) => {
+      e.preventDefault()
+      setError('')
+      if (input.length < 3) {
+        setError('Minimum 3 chars')
+        return
+      }
+      if (inputRef.current) inputRef.current.blur()
+      if (input === searchTerm) return
+      history.push(`/?search=${input}`)
+    },
+    [history, input, searchTerm]
+  )
 
   return (
     <SearchForm

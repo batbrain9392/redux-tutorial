@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import MuiLink from '@material-ui/core/Link'
@@ -24,4 +24,4 @@ const Header = ({ replace }) => {
   )
 }
 
-export default Header
+export default memo(Header)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Typography from '@material-ui/core/Typography'
 
 const Description = () => {
@@ -14,4 +14,4 @@ const Description = () => {
   )
 }
 
-export default Description
+export default memo(Description)
