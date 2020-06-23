@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import InputBase from '@material-ui/core/InputBase'
@@ -54,4 +54,4 @@ const SearchForm = ({ inputRef, input, setInput, error, onSubmit }) => {
   )
 }
 
-export default SearchForm
+export default memo(SearchForm)

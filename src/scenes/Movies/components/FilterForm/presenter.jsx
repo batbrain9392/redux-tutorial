@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import MovieIcon from '@material-ui/icons/Movie'
 import ViewCarouselIcon from '@material-ui/icons/ViewCarousel'
 import TvIcon from '@material-ui/icons/Tv'
@@ -60,4 +60,4 @@ const FilterForm = ({ type, onFilter, onResetFilter }) => {
   )
 }
 
-export default FilterForm
+export default memo(FilterForm)
