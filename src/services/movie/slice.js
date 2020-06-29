@@ -29,11 +29,11 @@ export const slice = createSlice({
     loading: false,
   },
   reducers: {
-    resetMovies: (state) => ({
-      ...state,
+    resetMovies: () => ({
       entities: [],
       totalEntities: 0,
       error: '',
+      loading: false,
     }),
   },
   extraReducers: {
