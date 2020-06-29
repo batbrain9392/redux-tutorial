@@ -3,7 +3,7 @@ import { fetchMoviesBySearch, resetMovies } from '../movie/slice'
 
 const sliceName = 'filter'
 
-export const slice = createSlice({
+const slice = createSlice({
   name: sliceName,
   initialState: {
     searchTerm: '',

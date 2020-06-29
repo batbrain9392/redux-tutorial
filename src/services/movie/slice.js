@@ -20,7 +20,7 @@ export const fetchMoviesBySearch = createAsyncThunk(
   }
 )
 
-export const slice = createSlice({
+const slice = createSlice({
   name: sliceName,
   initialState: {
     entities: [],
