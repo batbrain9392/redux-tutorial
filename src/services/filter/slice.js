@@ -11,25 +11,22 @@ const slice = createSlice({
     type: '',
   },
   reducers: {
-    setSearchTerm: (state, action) => ({
-      ...state,
-      searchTerm: action.payload,
-      page: 1,
-    }),
-    resetFilters: () => ({
-      searchTerm: '',
-      page: 1,
-      type: '',
-    }),
-    setPageState: (state, action) => ({
-      ...state,
-      page: action.payload,
-    }),
-    setTypeState: (state, action) => ({
-      ...state,
-      type: action.payload,
-      page: 1,
-    }),
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload
+      state.page = 1
+    },
+    resetFilters: (state) => {
+      state.searchTerm = ''
+      state.page = 1
+      state.type = ''
+    },
+    setPageState: (state, action) => {
+      state.page = action.payload
+    },
+    setTypeState: (state, action) => {
+      state.type = action.payload
+      state.page = 1
+    },
   },
 })
 

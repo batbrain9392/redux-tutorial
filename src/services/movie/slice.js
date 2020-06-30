@@ -29,12 +29,12 @@ const slice = createSlice({
     loading: false,
   },
   reducers: {
-    resetMovies: () => ({
-      entities: [],
-      totalEntities: 0,
-      error: '',
-      loading: false,
-    }),
+    resetMovies: (state) => {
+      state.entities = []
+      state.totalEntities = 0
+      state.error = ''
+      state.loading = false
+    },
   },
   extraReducers: {
     [fetchMoviesBySearch.pending]: (state) => {
