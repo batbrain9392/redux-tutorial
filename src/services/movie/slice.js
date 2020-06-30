@@ -20,7 +20,7 @@ export const fetchMoviesBySearch = createAsyncThunk(
   }
 )
 
-export const slice = createSlice({
+const slice = createSlice({
   name: sliceName,
   initialState: {
     entities: [],
@@ -29,12 +29,12 @@ export const slice = createSlice({
     loading: false,
   },
   reducers: {
-    resetMovies: (state) => ({
-      ...state,
-      entities: [],
-      totalEntities: 0,
-      error: '',
-    }),
+    resetMovies: (state) => {
+      state.entities = []
+      state.totalEntities = 0
+      state.error = ''
+      state.loading = false
+    },
   },
   extraReducers: {
     [fetchMoviesBySearch.pending]: (state) => {
